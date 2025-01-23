@@ -1,0 +1,22 @@
+:root {
+    --text-color: #fff;
+    --body-color: antiquewhite;
+}
+img {
+    max-width: 100%;
+}
+body {
+    background-color : #000;
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.film-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+li {
+    max-width: 250px;
+    list-style: none;
+}
