@@ -28,6 +28,7 @@
         const response = await fetch(url, options);
         const result = await response.json();
         posts.data = [...posts.data, result];
+        ev.target.reset();
     }
 </script>
 
