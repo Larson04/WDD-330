@@ -32,8 +32,8 @@ function filterPosts() {
   filteredPosts = 
         posts.filter((post) => 
           post.title.toLowerCase().includes(searchInput.toLowerCase()) ||
-          post.body.toLowerCase().includes(searchInput.toLowerCase()) ||
-          posts.tags.indexOf(searchInput.toLowerCase()) != -1
+          post.body.toLowerCase().includes(searchInput.toLowerCase()) // ||
+          // posts.tags.indexOf(searchInput.toLowerCase()) != -1
           
           
         ) || [];
