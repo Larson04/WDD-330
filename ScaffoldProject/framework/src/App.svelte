@@ -1,8 +1,11 @@
 <script>
-  import Login from "./lib/Login.svelte";
-  import NavBar from "./lib/NavBar.svelte";
-  import Post from "./lib/Post.svelte";
-  import Profile from "./lib/Profile.svelte";
+  import Login from './lib/Login.svelte';
+  import NavBar from './lib/NavBar.svelte';
+  import Post from './lib/Post.svelte';
+  import Profile from './lib/Profile.svelte';
+  import {checkAuth} from './lib/auth.svelte.js';
+  import {onMount} from 'svelte';
+  import {userData} from './lib/stores.svelte.js';
 
   let route = $state('');
   let params = $state();
@@ -10,13 +13,27 @@
   function handleRouteChange() {
     console.log(location);
     const [routeString, paramString] = location.hash.split('?');
+
+    if (routeString === '#profile' && userData.isLoggedIn) {
+      route = routeString;
+    }else{
+      route = '#login';
+    }
+    }
+
     params = new URLSearchParams('?' + paramString);
     route = routeString;
     
 
   }
 
+  function innit(){
+    checkAuth();
+  }
+
+
   window.addEventListener('popstate', handleRouteChange)
+  onMount(innit);
 </script>
 
 <header>
@@ -28,7 +45,7 @@
 
 
 
-  <div class="card">
+  <div class='card'>
     {#if route === '#home' || route === ''}
       <p> Welcome Home</p>
     {:else if route === '#login'}

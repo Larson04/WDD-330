@@ -1,0 +1,1 @@
+export const userData = $state({isLoggedIn: false, user: {}});
